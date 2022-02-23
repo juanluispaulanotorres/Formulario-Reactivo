@@ -44,6 +44,10 @@ public class Persona {
     @Column(name = "termination_date")
     private Date termination_date;
 
+    public Persona() {
+
+    }
+
     public Persona(PersonaInputDTO personaDTO) {
         if (personaDTO == null)
             return;

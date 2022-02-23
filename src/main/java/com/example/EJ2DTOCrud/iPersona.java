@@ -1,9 +1,11 @@
 package com.example.EJ2DTOCrud;
 
 import java.util.Date;
+import java.util.List;
 
 public interface iPersona {
     PersonaOutputDTO addPersona(PersonaInputDTO personaInputDTO) throws Exception;
+    List<Persona> listaPersonas();
     /*int getId();
     String getUsuario();
     void setUsuario(String usuario);

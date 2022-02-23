@@ -23,11 +23,9 @@ public class Controlador {
         return "Persona creada correctamente";
     }
 
-    /*@GetMapping("/listdoPersonas")
+    @GetMapping("/listadoPersonas")
     public List<Persona> listaPersonas() {
-        List<Persona> lista;
-        lista = personaService.personaRepositorio.findAll();
         // En caso de error de formato, mostrar el resultado en "String"
-        return lista;
-    }*/
+        return personaService.listaPersonas();
+    }
 }

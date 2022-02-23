@@ -3,8 +3,8 @@ package com.example.EJ2DTOCrud;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class PersonaService implements iPersona{
@@ -34,6 +34,13 @@ public class PersonaService implements iPersona{
         lista = personaRepositorio.findAll();
         return lista;
     }
+
+    @Override
+    public Optional<Persona> idPersona(int id) {
+        return personaRepositorio.findById(id);
+    }
+
+
 
     /*@Override
     public int getId() {

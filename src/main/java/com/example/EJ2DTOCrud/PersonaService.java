@@ -3,11 +3,8 @@ package com.example.EJ2DTOCrud;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
-
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 @Service
@@ -61,7 +58,7 @@ public class PersonaService implements iPersona{
         return null;
     }
 
-    /*@Override
+    @Override
     public void modificaPersona(int id, PersonaInputDTO personaInputDTO) {
         // Recuperar la lista de las personas y recorrerla con un bucle para encontrar la solicitada y modificarla
         List<PersonaOutputDTO> lista = this.listaPersonas();
@@ -71,13 +68,13 @@ public class PersonaService implements iPersona{
             p = lista.get(i);
             if (p.getId_persona() == id) {
                 Persona persona = new Persona(personaInputDTO);
-                PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(persona);
-                lista.set(i, personaOutputDTO);
+                // IMPORTANTE: Hay que establecer el nuevo "id" de la persona usando el que pasamos como parámetro
+                persona.setId_persona(id);
 
-                System.out.println(personaOutputDTO);
+                personaRepositorio.save(persona);
             }
         }
-    }*/
+    }
 
     @Override
     public void eliminaPersona(int id) throws Exception {
@@ -87,123 +84,4 @@ public class PersonaService implements iPersona{
             throw new Exception("La persona que busca no se encuentra en la base de datos");
         }
     }
-
-
-
-
-
-    /*@Override
-    public int getId() {
-        return persona.getId_persona();
-    }
-
-    @Override
-    public String getUsuario() {
-        return persona.getUsuario();
-    }
-
-    @Override
-    public void setUsuario(String usuario) {
-        persona.setUsuario(usuario);
-    }
-
-    @Override
-    public String getPassword() {
-        return persona.getPassword();
-    }
-
-    @Override
-    public void setPassword(String password) {
-        persona.setPassword(password);
-    }
-
-    @Override
-    public String getName() {
-        return persona.getName();
-    }
-
-    @Override
-    public void setName(String name) {
-        persona.setName(name);
-    }
-
-    @Override
-    public String getSurname() {
-        return persona.getSurname();
-    }
-
-    @Override
-    public void setSurname(String surname) {
-        persona.setSurname(surname);
-    }
-
-    @Override
-    public String getCompany_email() {
-        return persona.getCompany_email();
-    }
-
-    @Override
-    public void setCompany_email(String company_email) {
-        persona.setCompany_email(company_email);
-    }
-
-    @Override
-    public String getPersonal_email() {
-        return persona.getPersonal_email();
-    }
-
-    @Override
-    public void setPersonal_email(String personal_email) {
-        persona.setPersonal_email(personal_email);
-    }
-
-    @Override
-    public String getCity() {
-        return persona.getCity();
-    }
-
-    @Override
-    public void setCity(String city) {
-        persona.setCity(city);
-    }
-
-    @Override
-    public boolean getActive() {
-        return persona.isActive();
-    }
-
-    @Override
-    public void setActive(boolean active) {
-        persona.setActive(active);
-    }
-
-    @Override
-    public Date getCreated_date() {
-        return persona.getCreated_date();
-    }
-
-    @Override
-    public void setCreated_date(Date created_date) {
-        persona.setCreated_date(created_date);
-    }
-
-    @Override
-    public String getImagen_url() {
-        return persona.getImagen_url();
-    }
-
-    @Override
-    public void setImagen_url(String imagen_url) {
-        persona.setImagen_url(imagen_url);
-    }
-
-    @Override
-    public Date getTermination_date() {
-        return persona.getTermination_date();
-    }
-
-    @Override
-    public void setTermination_date(Date termination_date) {
-        persona.setTermination_date(termination_date);
-    }*/
 }

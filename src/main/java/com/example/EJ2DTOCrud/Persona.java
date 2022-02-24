@@ -2,7 +2,6 @@ package com.example.EJ2DTOCrud;
 
 import lombok.Data;
 import lombok.NonNull;
-
 import javax.persistence.*;
 import java.util.Date;
 

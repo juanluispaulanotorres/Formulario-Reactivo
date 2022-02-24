@@ -4,7 +4,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
 @RestController
 public class Controlador {
@@ -35,12 +34,12 @@ public class Controlador {
     }
 
     // Modificar usuario
-   /* @GetMapping("/modificar/{id}")
+    @PutMapping("/modificar/{id}")
     public void modificaPersona(@PathVariable int id, @RequestBody PersonaInputDTO persona) {
         personaService.modificaPersona(id, persona);
-    }*/
+    }
 
-    @GetMapping("/eliminar/{id}")
+    @DeleteMapping("/eliminar/{id}")
     public String eliminaPersona(@PathVariable int id) throws Exception {
         personaService.eliminaPersona(id);
         return "Persona eliminada de la base de datos";

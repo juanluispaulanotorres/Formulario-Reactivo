@@ -5,8 +5,10 @@ import java.util.Optional;
 
 public interface iPersona {
     PersonaOutputDTO addPersona(PersonaInputDTO personaInputDTO) throws Exception;
-    List<Persona> listaPersonas();
-    Optional<Persona> idPersona(int id);
+    List<PersonaOutputDTO>  listaPersonas();
+    PersonaOutputDTO idPersona(int id) throws Exception;
+    /*List<PersonaOutputDTO> usuarioPersona(String usuario);*/
+    /*void modificaPersona(int id, Persona persona) ;*/
     /*int getId();
     String getUsuario();
     void setUsuario(String usuario);

@@ -8,10 +8,6 @@ import java.util.Optional;
 
 @RestController
 public class Controlador {
-    @GetMapping
-    public String getHola() {
-        return "Hola";
-    }
 
     @Autowired
     PersonaService personaService;
@@ -23,13 +19,25 @@ public class Controlador {
     }
 
     @GetMapping("/listadoPersonas")
-    public List<Persona> listaPersonas() {
+    public List<PersonaOutputDTO> listaPersonas() {
         return personaService.listaPersonas();
     }
 
-    // Mostrar persona por id
+    // Mostrar persona por "id"
     @GetMapping("/persona/{id}")
-    public Optional<Persona> idPersona(@PathVariable int id) {
+    public PersonaOutputDTO idPersona(@PathVariable int id) throws Exception{
         return personaService.idPersona(id);
     }
+
+    // Mostrar persona por "usuario"
+    /*@GetMapping("/persona/{usuario}")
+    public List<PersonaOutputDTO> usuarioPersona(@PathVariable String usuario) {
+        return personaService.usuarioPersona(usuario);
+    }*/
+
+    // Modificar usuario
+    /*@GetMapping("/modificar/{id}")
+    public void modificaPersona(@PathVariable int id, @RequestBody Persona persona) {
+        personaService.modificaPersona(id, persona);
+    }*/
 }

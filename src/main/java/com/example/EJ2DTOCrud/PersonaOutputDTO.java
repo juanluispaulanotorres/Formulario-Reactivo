@@ -21,6 +21,7 @@ public class PersonaOutputDTO implements Serializable {
     private Date termination_date;
 
     public PersonaOutputDTO(Persona persona) {
+        setId_persona(persona.getId_persona());
         setUsuario(persona.getUsuario());
         setPassword(persona.getPassword());
         setName(persona.getName());

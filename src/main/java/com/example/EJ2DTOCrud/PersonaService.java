@@ -1,10 +1,13 @@
 package com.example.EJ2DTOCrud;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class PersonaService implements iPersona{
@@ -29,18 +32,40 @@ public class PersonaService implements iPersona{
     }
 
     @Override
-    public List<Persona> listaPersonas() {
-        List<Persona> lista;
-        lista = personaRepositorio.findAll();
+    public List<PersonaOutputDTO> listaPersonas() {
+        List<PersonaOutputDTO> lista;
+        lista = personaRepositorio.findAll().stream().map(persona -> new PersonaOutputDTO(persona)).collect(Collectors.toList());
         return lista;
     }
 
     @Override
-    public Optional<Persona> idPersona(int id) {
-        return personaRepositorio.findById(id);
+    public PersonaOutputDTO idPersona(int id) throws Exception {
+        Persona persona = personaRepositorio.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "No se ha encontrado a la persona solicitada"));
+        PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(persona);
+        return personaOutputDTO;
     }
 
+    /*@Override
+    public void modificaPersona(int id, Persona persona) {
+        // Recuperar la lista de las personas y recorrerla con un bucle para encontrar la solicitada y modificarla
+        List<Persona> lista = personaRepositorio.findAll();
 
+        for (int i = 0; i < lista.size(); i++) {
+            Persona p;
+            p = lista.get(i);
+            if (p.getId_persona() == id) {
+                lista.set(i, persona);
+                System.out.println("Persona modificada");
+            }
+        }
+    }*/
+
+
+    /*@Override
+    public List<PersonaOutputDTO> usuarioPersona(String usuario) {
+        List<PersonaOutputDTO> lista;
+        lista = personaRepositorio.findBy();
+    }*/
 
     /*@Override
     public int getId() {

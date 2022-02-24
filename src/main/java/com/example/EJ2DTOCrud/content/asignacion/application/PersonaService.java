@@ -1,5 +1,10 @@
-package com.example.EJ2DTOCrud;
+package com.example.EJ2DTOCrud.content.asignacion.application;
 
+import com.example.EJ2DTOCrud.content.asignacion.infraestructure.db.springdata.dbo.Persona;
+import com.example.EJ2DTOCrud.content.asignacion.application.port.iPersona;
+import com.example.EJ2DTOCrud.content.asignacion.infraestructure.controller.dto.input.PersonaInputDTO;
+import com.example.EJ2DTOCrud.content.asignacion.infraestructure.controller.dto.output.PersonaOutputDTO;
+import com.example.EJ2DTOCrud.content.asignacion.infraestructure.repository.jpa.PersonaRepositoryJpa;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
@@ -8,10 +13,10 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @Service
-public class PersonaService implements iPersona{
+public class PersonaService implements iPersona {
 
     @Autowired
-    PersonaRepositorio personaRepositorio;
+    PersonaRepositoryJpa personaRepositoryJpa;
 
     public PersonaOutputDTO addPersona(PersonaInputDTO personaInputDTO) throws Exception {
         if (personaInputDTO.getUsuario() == null) {
@@ -22,7 +27,7 @@ public class PersonaService implements iPersona{
 
         } else {
             Persona persona = new Persona(personaInputDTO);
-            personaRepositorio.save(persona);
+            personaRepositoryJpa.save(persona);
             PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(persona);
 
             return personaOutputDTO;
@@ -32,13 +37,13 @@ public class PersonaService implements iPersona{
     @Override
     public List<PersonaOutputDTO> listaPersonas() {
         List<PersonaOutputDTO> lista;
-        lista = personaRepositorio.findAll().stream().map(persona -> new PersonaOutputDTO(persona)).collect(Collectors.toList());
+        lista = personaRepositoryJpa.findAll().stream().map(persona -> new PersonaOutputDTO(persona)).collect(Collectors.toList());
         return lista;
     }
 
     @Override
     public PersonaOutputDTO idPersona(int id) throws Exception {
-        Persona persona = personaRepositorio.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "No se ha encontrado a la persona solicitada"));
+        Persona persona = personaRepositoryJpa.findById(id).orElseThrow(()-> new ResponseStatusException(HttpStatus.NOT_FOUND, "No se ha encontrado a la persona solicitada"));
         PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(persona);
         return personaOutputDTO;
     }
@@ -71,7 +76,7 @@ public class PersonaService implements iPersona{
                 // IMPORTANTE: Hay que establecer el nuevo "id" de la persona usando el que pasamos como parámetro
                 persona.setId_persona(id);
 
-                personaRepositorio.save(persona);
+                personaRepositoryJpa.save(persona);
             }
         }
     }
@@ -79,7 +84,7 @@ public class PersonaService implements iPersona{
     @Override
     public void eliminaPersona(int id) throws Exception {
         try {
-            personaRepositorio.deleteById(id);
+            personaRepositoryJpa.deleteById(id);
         } catch (Exception e) {
             throw new Exception("La persona que busca no se encuentra en la base de datos");
         }

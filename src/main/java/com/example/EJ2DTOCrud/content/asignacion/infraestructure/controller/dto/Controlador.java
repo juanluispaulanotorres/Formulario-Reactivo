@@ -1,8 +1,10 @@
-package com.example.EJ2DTOCrud;
+package com.example.EJ2DTOCrud.content.asignacion.infraestructure.controller.dto;
 
+import com.example.EJ2DTOCrud.content.asignacion.application.PersonaService;
+import com.example.EJ2DTOCrud.content.asignacion.infraestructure.controller.dto.input.PersonaInputDTO;
+import com.example.EJ2DTOCrud.content.asignacion.infraestructure.controller.dto.output.PersonaOutputDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.List;
 
 @RestController

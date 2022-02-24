@@ -1,4 +1,4 @@
-package com.example.EJ2DTOCrud;
+package com.example.EJ2DTOCrud.content.asignacion.infraestructure.controller.dto.input;
 
 import lombok.Data;
 

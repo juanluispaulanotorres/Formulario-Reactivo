@@ -3,6 +3,7 @@ package com.example.EJ2DTOCrud;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.server.ResponseStatusException;
 
 import java.util.List;
@@ -46,26 +47,41 @@ public class PersonaService implements iPersona{
     }
 
     /*@Override
-    public void modificaPersona(int id, Persona persona) {
+    public PersonaOutputDTO usuarioPersona(String usuario) {
+        List<PersonaOutputDTO> lista;
+        lista = personaRepositorio.findBy();
+    }*/
+
+    /*@Override
+    public void modificaPersona(int id, PersonaInputDTO personaInputDTO) {
         // Recuperar la lista de las personas y recorrerla con un bucle para encontrar la solicitada y modificarla
-        List<Persona> lista = personaRepositorio.findAll();
+        List<PersonaOutputDTO> lista = this.listaPersonas();
 
         for (int i = 0; i < lista.size(); i++) {
-            Persona p;
+            PersonaOutputDTO p;
             p = lista.get(i);
             if (p.getId_persona() == id) {
-                lista.set(i, persona);
-                System.out.println("Persona modificada");
+                Persona persona = new Persona(personaInputDTO);
+                PersonaOutputDTO personaOutputDTO = new PersonaOutputDTO(persona);
+                lista.set(i, personaOutputDTO);
+
+                System.out.println(personaOutputDTO);
             }
         }
     }*/
 
+    @Override
+    public void eliminaPersona(int id) throws Exception {
+        try {
+            personaRepositorio.deleteById(id);
+        } catch (Exception e) {
+            throw new Exception("La persona que busca no se encuentra en la base de datos");
+        }
+    }
 
-    /*@Override
-    public List<PersonaOutputDTO> usuarioPersona(String usuario) {
-        List<PersonaOutputDTO> lista;
-        lista = personaRepositorio.findBy();
-    }*/
+
+
+
 
     /*@Override
     public int getId() {

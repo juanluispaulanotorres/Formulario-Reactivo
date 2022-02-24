@@ -7,6 +7,7 @@ import java.util.Date;
 
 @Data
 public class PersonaInputDTO implements Serializable {
+    private int id_persona;
     private String usuario;
     private String password;
     private String name;
@@ -19,4 +20,5 @@ public class PersonaInputDTO implements Serializable {
     private String imagen_url;
     private Date termination_date;
 }
+
 

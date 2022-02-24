@@ -1,5 +1,7 @@
 package com.example.EJ2DTOCrud;
 
+import org.springframework.web.bind.annotation.PathVariable;
+
 import java.util.List;
 import java.util.Optional;
 
@@ -7,8 +9,9 @@ public interface iPersona {
     PersonaOutputDTO addPersona(PersonaInputDTO personaInputDTO) throws Exception;
     List<PersonaOutputDTO>  listaPersonas();
     PersonaOutputDTO idPersona(int id) throws Exception;
-    /*List<PersonaOutputDTO> usuarioPersona(String usuario);*/
-    /*void modificaPersona(int id, Persona persona) ;*/
+    /*PersonaOutputDTO usuarioPersona(String usuario);*/
+    /*void modificaPersona(int id, PersonaInputDTO persona) ;*/
+    void eliminaPersona(@PathVariable int id) throws Exception;
     /*int getId();
     String getUsuario();
     void setUsuario(String usuario);

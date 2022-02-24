@@ -52,6 +52,7 @@ public class Persona {
         if (personaDTO == null)
             return;
 
+        setId_persona(personaDTO.getId_persona());
         setUsuario(personaDTO.getUsuario());
         setPassword(personaDTO.getPassword());
         setName(personaDTO.getName());

@@ -14,8 +14,7 @@ public class Controlador {
 
     @PostMapping("/addPersona")
     public String addPersona(@RequestBody PersonaInputDTO persona) throws Exception {
-        personaService.addPersona(persona);
-        return "Persona creada correctamente";
+        return "Persona creada correctamente \n" + personaService.addPersona(persona);
     }
 
     @GetMapping("/listadoPersonas")
@@ -31,13 +30,19 @@ public class Controlador {
 
     // Mostrar persona por "usuario"
     /*@GetMapping("/persona/{usuario}")
-    public List<PersonaOutputDTO> usuarioPersona(@PathVariable String usuario) {
+    public PersonaOutputDTO usuarioPersona(@PathVariable String usuario) {
         return personaService.usuarioPersona(usuario);
     }*/
 
     // Modificar usuario
-    /*@GetMapping("/modificar/{id}")
-    public void modificaPersona(@PathVariable int id, @RequestBody Persona persona) {
+   /* @GetMapping("/modificar/{id}")
+    public void modificaPersona(@PathVariable int id, @RequestBody PersonaInputDTO persona) {
         personaService.modificaPersona(id, persona);
     }*/
+
+    @GetMapping("/eliminar/{id}")
+    public String eliminaPersona(@PathVariable int id) throws Exception {
+        personaService.eliminaPersona(id);
+        return "Persona eliminada de la base de datos";
+    }
 }

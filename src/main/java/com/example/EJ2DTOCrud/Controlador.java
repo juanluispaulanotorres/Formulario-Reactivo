@@ -29,10 +29,10 @@ public class Controlador {
     }
 
     // Mostrar persona por "usuario"
-    /*@GetMapping("/persona/{usuario}")
+    @GetMapping("/personaUsuario/{usuario}")
     public PersonaOutputDTO usuarioPersona(@PathVariable String usuario) {
         return personaService.usuarioPersona(usuario);
-    }*/
+    }
 
     // Modificar usuario
    /* @GetMapping("/modificar/{id}")

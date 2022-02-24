@@ -46,11 +46,20 @@ public class PersonaService implements iPersona{
         return personaOutputDTO;
     }
 
-    /*@Override
+    @Override
     public PersonaOutputDTO usuarioPersona(String usuario) {
-        List<PersonaOutputDTO> lista;
-        lista = personaRepositorio.findBy();
-    }*/
+        List<PersonaOutputDTO> lista = this.listaPersonas();
+
+        for (int i = 0; i < lista.size(); i++) {
+            PersonaOutputDTO personaOutputDTO;
+            personaOutputDTO = lista.get(i);
+
+            if (personaOutputDTO.getUsuario().equalsIgnoreCase(usuario)) {
+                return personaOutputDTO;
+            }
+        }
+        return null;
+    }
 
     /*@Override
     public void modificaPersona(int id, PersonaInputDTO personaInputDTO) {

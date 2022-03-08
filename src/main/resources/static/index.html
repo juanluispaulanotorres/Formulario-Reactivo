@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>Ejercicio FlexBox</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='styles.css'>
+    <script src="script.js"></script>
+</head>
+<body>
+<form>
+    <h2><strong>Personas</strong></h2>
+
+    <div id="span">
+        <img src="img.jpg" height="40px" width="40px">
+        <span>A continuación inserte sus datos</span>
+    </div>
+    <div id="principal">
+        <div class="fila">
+            <label>Usuario</label> <input type="text" id="txtUsuario" name="txtUsuario"><br>
+        </div>
+        <div class="fila">
+            <label>Apellido</label> <input type="text" id="txtApellido" name="txtApellido"><br>
+        </div>
+        <div class="fila">
+            <label>Contraseña</label> <input type="password" id="txtPasswd" name="txtPasswd"><br>
+        </div>
+        <div class="fila">
+            <label>Nombre</label> <input type="text" id="txtNombre" name="txtNombre"><br>
+        </div>
+        <div id="email" class="fila">
+            <label>Correo de empresa</label> <input type="text" id="txtCorreoEmpresa" name="txtCorreoEmpresa"><br>
+        </div>
+        <div class="fila">
+            <label>Correo personal</label> <input type="text" id="txtCorreoPersonal" name="txtCorreoPersonal"><br>
+        </div>
+        <div class="fila">
+            <label>Ciudad</label> <input type="text" id="txtCiudad" name="txtCiudad"><br>
+        </div>
+        <div class="fila">
+            <label>Active</label> <input type="checkbox" id="txtActivo" name="txtActivo"><br>
+        </div>
+        <div class="fila">
+            <label>Fecha creación</label> <input type="date" id="txtFCreacion" name="txtFCreacion"><br>
+        </div>
+        <div class="fila">
+            <label>Url imagen</label> <input type="text" id="txtImagen" name="txtImagen"><br>
+        </div>
+        <div class="fila">
+            <label>Fecha finalización</label> <input type="date" id="txtFFinalizacion" name="txtFFinalizacion"><br>
+        </div>
+        <div id="botones">
+            <input type="submit" value="Editar" id="btnEditar" name="btnEditar">
+            <input type="reset" value="Limpiar" id="btnLimpiar" name="btnLimpiar">
+        </div>
+    </div>
+</form>
+</body>
+</html>
